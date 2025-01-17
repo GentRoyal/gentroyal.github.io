@@ -52,6 +52,22 @@
             background: var(--background);
         }
 
+        #theme-toggle { 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            color: var(--text-dark); 
+            font-size: 1.5rem; /* Adjust the size if needed */ 
+            margin-left: 1rem; /* Adjust for spacing */ 
+        } 
+        #theme-toggle i { 
+            color: var(--text-dark); 
+        } /* Ensure dark mode styles for the toggle icon */ 
+        
+        body.dark-mode #theme-toggle i { 
+            color: var(--primary-dark); 
+        }
+
         /* Typography */
         h1, .name {
             font-size: 2rem; /* Adjusted from 2.5rem */
@@ -378,7 +394,7 @@
                 <a href="#about">About</a> <a href="#skills">Skills</a> 
                 <a href="#projects">Projects</a> 
                 <a href="#contact">Contact</a> 
-                <button id="theme-toggle" style="background: none; border: none; cursor: pointer;"> <i class="fas fa-toggle-on fa-lg"></i> </button> 
+                <button id="theme-toggle" style="background: none; border: none; cursor: pointer; color: var(--text-dark);"> <i class="fas fa-toggle-on fa-lg"></i> </button>
             </div> 
         </div> 
     </nav>
@@ -529,11 +545,17 @@
         const themeToggle = document.getElementById('theme-toggle'); 
         const body = document.body; 
         const toggleIcon = themeToggle.querySelector('i'); 
-        themeToggle.addEventListener('click', () => { 
-            body.classList.toggle('dark-mode'); 
-            toggleIcon.classList.toggle('fa-toggle-on'); 
-            toggleIcon.classList.toggle('fa-toggle-off');
-            
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) { 
+                toggleIcon.classList.remove('fa-toggle-on'); 
+                toggleIcon.classList.add('fa-toggle-off'); }
+            else{
+                toggleIcon.classList.remove('fa-toggle-off'); 
+                toggleIcon.classList.add('fa-toggle-on'); 
+            }
+        });
     </script>
 </body>
 </html>
