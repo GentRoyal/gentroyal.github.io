@@ -145,3 +145,8 @@ p {
 .projects-grid {
     display: grid;
     grid-template-columns:
+}
+
+.body {
+    background-color: lightblue;
+}
