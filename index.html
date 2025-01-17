@@ -8,24 +8,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css" rel="stylesheet">
     <style>
         /* CSS Variables */
-        :root {
-            --primary: #1A2C42;
-            --secondary: #2A9D8F;
-            --text-dark: #1e293b;
-            --text: #2D3748;
-            --text-light: #64748b;
-            --background: #FFFFFF;
-            --background-light: #f8fafc;
-            --border: #E2E8F0;
-            --hover-blue: #2563eb;
-            --primary-dark: #ffffff;
-            --secondary-dark: #1A2C42;
-            --text-dark-mode: #f8fafc;
-            --text-light-mode: #2D3748;
-            --background-dark: #1A2C42;
-            --background-light-mode: #FFFFFF;
-        }
-
+        :root { --primary: #1A2C42; 
+               --secondary: #2A9D8F; 
+               --text-dark: #1e293b; 
+               --text: #2D3748; 
+               --text-light: #64748b; 
+               --background: #FFFFFF; 
+               --background-light: #f8fafc; 
+               --header-bg: #d3d3d3; 
+               --skills-bg: #e9f7ef; 
+               --projects-bg: #dff0ea; 
+               --border: #E2E8F0; 
+               --hover-blue: #2563eb; }
+        
         body.dark-mode { 
             background: var(--background-dark); 
             color: var(--text-dark-mode); 
@@ -51,6 +46,14 @@
             color: var(--text);
             background: var(--background);
         }
+
+        header.header-container { background-color: var(--header-bg); }
+
+        section#skills { background-color: var(--skills-bg); } 
+        
+        section#projects { background-color: var(--projects-bg); }
+
+        
 
         #theme-toggle { 
             background: none; 
