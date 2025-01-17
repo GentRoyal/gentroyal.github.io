@@ -397,27 +397,29 @@
             <a href="#"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
-
+    
+<script>
     function filterProjects(category) {
-    const projects = document.querySelectorAll('.project-card');
-    projects.forEach(project => {
-        if (category === 'all' || project.getAttribute('data-category') === category) {
-            project.style.display = 'block';
-        } else {
-            project.style.display = 'none';
-        }
-    });
+        const projects = document.querySelectorAll('.project-card');
+        projects.forEach(project => {
+            if (category === 'all' || project.getAttribute('data-category') === category) {
+                project.style.display = 'block';
+            } else {
+                project.style.display = 'none';
+            }
+        });
 
-    // Update active class on buttons
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(button => {
-        if (button.textContent.toLowerCase() === category || category === 'all') {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
-        }
-    });
-}
-
+        // Update active class on buttons
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(button => {
+            if (button.textContent.toLowerCase() === category || category === 'all') {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+</script>
 </body>
+
 </html>
