@@ -150,101 +150,49 @@
         </div>
     </header>
 
-    
     <main class="container">
         <section id="about">
             <h2>About Me</h2>
             <p>A passionate Data Scientist with expertise in machine learning and statistical analysis. I specialize in developing innovative solutions that transform complex data into actionable insights, driving strategic business decisions across multiple industries.</p>
         </section>
 
-    <section id="skills">
-    <h2>Skills & Expertise</h2>
-    <div class="skills-grid">
-        <!-- Data Analysis, Preprocessing & Visualization -->
-        <div class="skill-card">
-            <h3><i class="fas fa-database skill-icon"></i>Data Analysis & Visualization</h3>
-            <p>Python, MySQL, PowerBI, A/B Testing, Interactive Dashboards, Presentation, Documentation</p>
-        </div>
-
-        <!-- Machine Learning & NLP -->
-        <div class="skill-card">
-            <h3><i class="fas fa-brain skill-icon"></i>Machine Learning & NLP</h3>
-            <p>Predictive Modeling, Clustering, Statistical Analysis, Classification, Text Classification, Topic Modeling, NLTK, SpaCy...</p>
-        </div>
-
-        <!-- Tools & Technologies -->
-        <div class="skill-card">
-            <h3><i class="fas fa-cogs skill-icon"></i>Tools & Technologies</h3>
-            <p>API Development, Streamlit, Flask</p>
-        </div>
-
-        <!-- Big Data & Automation -->
-        <div class="skill-card">
-            <h3><i class="fas fa-cloud skill-icon"></i>Big Data & Automation</h3>
-            <p>ETL, Automation, Data Pipelines, Cloud Computing</p>
-        </div>
-    </div>
-</section>
-
-<section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="project-filters">
-        <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-        <button class="filter-btn" onclick="filterProjects('healthcare')">Healthcare</button>
-        <button class="filter-btn" onclick="filterProjects('finance')">Finance</button>
-        <button class="filter-btn" onclick="filterProjects('research')">Research</button>
-    </div>
-
-    <div class="projects-grid">
-        <div class="project-card healthcare" data-category="healthcare">
-            <div class="project-content">
-                <span class="project-tag">Healthcare</span>
-                <h3>MedNet - Medical Charge and Medical Theme Generator</h3>
-                <p>MedNet is a medical charge and theme generator app designed to assist healthcare professionals in generating medical charges and themes for diagnoses and medical cases. The app is powered by Streamlit, providing an easy-to-use interface for medical workflow automation.</p>
-                <div class="tech-stack">
-                    <strong>Technologies:</strong> Streamlit, Python, Machine Learning
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-database skill-icon"></i>Data Analysis & Visualization</h3>
+                    <p>Python, MySQL, PowerBI, A/B Testing, Interactive Dashboards</p>
                 </div>
-                <a href="https://mednet.streamlit.app/" target="_blank">Visit MedNet App</a>
-            </div>
-        </div>
-
-        <div class="project-card finance" data-category="finance">
-            <div class="project-content">
-                <span class="project-tag">Finance</span>
-                <h3>Fraud Detection System</h3>
-                <p>Real-time anomaly detection system processing 10k+ transactions per second. Detects fraudulent activities with high accuracy using machine learning models.</p>
-                <div class="tech-stack">
-                    <strong>Technologies:</strong> PySpark, Kafka, ML
+                <div class="skill-card">
+                    <h3><i class="fas fa-brain skill-icon"></i>Machine Learning & NLP</h3>
+                    <p>Predictive Modeling, Clustering, Text Classification, NLTK</p>
                 </div>
-                <a href="#">Visit Project</a>
-            </div>
-        </div>
-
-        <div class="project-card research" data-category="research">
-            <div class="project-content">
-                <span class="project-tag">Research</span>
-                <h3>Climate Pattern Analysis</h3>
-                <p>Advanced statistical analysis of climate data patterns and predictions. This project uses time-series data to predict future climate trends.</p>
-                <div class="tech-stack">
-                    <strong>Technologies:</strong> R, Time Series Analysis, GIS
+                <div class="skill-card">
+                    <h3><i class="fas fa-cogs skill-icon"></i>Tools & Technologies</h3>
+                    <p>API Development, Streamlit, Flask</p>
                 </div>
-                <a href="#">Visit Project</a>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-    <section id="contact">
-    <h2>Contact Me</h2>
-    <form class="contact-form" action="https://formspree.io/f/mpwweppp" method="post">
-        
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Project 1</h3>
+                    <p>Details about the project...</p>
+                </div>
+            </div>
+        </section>
 
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form class="contact-form" action="https://formspree.io/f/mpwweppp" method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
     </main>
 
     <footer>
@@ -263,28 +211,6 @@
             body.setAttribute('data-theme', isDark ? 'light' : 'dark');
             document.querySelector('.theme-toggle').textContent = isDark ? 'Switch to Dark Mode' : 'Switch to Light Mode';
         }
-
-    function filterProjects(category) {
-        const projects = document.querySelectorAll('.project-card');
-        projects.forEach(project => {
-            if (category === 'all' || project.getAttribute('data-category') === category) {
-                project.style.display = 'block';
-            } else {
-                project.style.display = 'none';
-            }
-        });
-
-        // Update active class on buttons
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(button => {
-            if (button.textContent.toLowerCase() === category || category === 'all') {
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
-        });
-    }
-</script>
+    </script>
 </body>
-
 </html>
