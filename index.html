@@ -7,20 +7,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css" rel="stylesheet">
     <style>
-        /* CSS Variables */
         :root {
             --primary: #1A2C42;
             --secondary: #2A9D8F;
-            --text-dark: #1e293b;
             --text: #2D3748;
-            --text-light: #64748b;
+            --text-light: #4A5568;
             --background: #FFFFFF;
-            --background-light: #f8fafc;
+            --light-bg: #F7FAFC;
             --border: #E2E8F0;
-            --hover-blue: #2563eb;
         }
 
-        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -32,34 +28,6 @@
             line-height: 1.6;
             color: var(--text);
             background: var(--background);
-        }
-
-        /* Typography */
-        h1, .name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--primary);
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-size: 1.125rem;
         }
 
         /* Navigation */
@@ -98,86 +66,69 @@
             color: var(--secondary);
         }
 
-        /* Header Section */
-        .header-container {
-            display: flex;
-            align-items: center;
-            padding: 2rem;
-            background-color: var(--background-light);
-            gap: 3rem;
-            min-height: 400px;
-            margin-top: 60px;
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #234876);
+            color: white;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
         }
 
-        .content-section {
-            flex: 1;
-            padding: 2rem;
-        }
-
-        .photo-section {
-            position: relative;
-            width: 300px;
-            height: 350px;
-        }
-
-        .photo-frame {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background-color: var(--text-dark);
-        }
-
-        .photo-frame::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            background-color: var(--background);
-            z-index: -1;
+        .profile-wrapper {
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
         }
 
         .profile-img {
-            width: 100%;
-            height: 100%;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
+            border-radius: 100%;
+            transition: transform 0.3s ease;
         }
 
-        .title {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+        .profile-img:hover {
+            transform: scale(1.1);
         }
 
-        /* Social Links - Unified Style */
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            margin: 0;
         }
-
+        
+        p {
+            font-size: 18px;
+            color: #ddd;
+            margin-top: 10px;
+        }
+        
         .social-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 1.25rem;
+            margin: 10px;
+            font-size: 24px;
+            color: #fff;
         }
-
+        
         .social-links a:hover {
-            color: var(--hover-blue);
+            color: #00acee;  /* LinkedIn color or any preferred color */
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        footer .social-links a {
-            color: var(--background);
-            opacity: 0.8;
+        .profile-img {
+            width: auto;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
         }
 
-        footer .social-links a:hover {
-            opacity: 1;
-        }
-
-        /* Main Container */
+        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -188,23 +139,31 @@
             margin-bottom: 6rem;
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .skill-card {
-            background: var(--background-light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--primary);
         }
 
-        .skill-icon {
-            color: var(--secondary);
-            margin-right: 0.5rem;
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
         }
 
         /* Projects Section */
@@ -240,7 +199,7 @@
         }
 
         .project-card {
-            background: var(--background-light);
+            background: var(--light-bg);
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s ease;
@@ -250,6 +209,12 @@
         .project-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-image {
+            width: 24px%;
+            height: 24px;
+            object-fit: contain;
         }
 
         .project-content {
@@ -272,11 +237,30 @@
             font-size: 0.875rem;
         }
 
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-icon {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+
         /* Contact Form */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: var(--background-light);
+            background: var(--light-bg);
             padding: 2rem;
             border-radius: 8px;
             border: 1px solid var(--border);
@@ -315,39 +299,25 @@
             margin-top: 6rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem;
-                margin-top: 80px;
-            }
-
-            .photo-section {
-                width: 250px;
-                height: 300px;
-            }
-
-            .content-section {
-                padding: 1rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
         }
-    </style>
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+            </style>
 </head>
-<!-- Rest of your HTML remains the same -->
 <body>
     <nav>
         <div class="nav-container">
@@ -361,25 +331,22 @@
         </div>
     </nav>
 
-    <header class="header-container">
-  <div class="content-section">
-    <h1 class="name">Ridwan Lanre Yusuf</h1>
-    <p class="title">Data Scientist | Python, SQL, ML, Power BI | Building Data-Driven Solutions</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/yusufridwan/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
-      <a href="https://github.com/GentRoyal" target="_blank"><i class="fab fa-github fa-lg"></i></a>
-      <a href="https://x.com/RidwanInsights" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+    <header>
+    <div class="header-content">
+        <div class="profile-wrapper">
+            <img src="phot.jpg" alt="Profile" class="profile-img">
+        </div>
+        <h1>Ridwan Lanre Yusuf</h1>
+        <p>Data Scientist | Python, SQL, ML, Power BI | Building Data-Driven Solutions</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/yusufridwan/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/GentRoyal" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/RidwanInsights" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
     </div>
-  </div>
-  
-  <div class="photo-section">
-    <div class="photo-frame">
-      <img src="phot.jpg" alt="Profile" class="profile-img">
-    </div>
-  </div>
 </header>
 
-    
+
     <main class="container">
         <section id="about">
             <h2>About Me</h2>
