@@ -75,46 +75,46 @@
         }
 
         .profile-wrapper {
-    display: inline-block;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
 
-.profile-img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 100%;
-    transition: transform 0.3s ease;
-}
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 100%;
+            transition: transform 0.3s ease;
+        }
 
-.profile-img:hover {
-    transform: scale(1.1);
-}
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
 
-h1 {
-    font-size: 36px;
-    color: #fff;
-    margin: 0;
-}
-
-p {
-    font-size: 18px;
-    color: #ddd;
-    margin-top: 10px;
-}
-
-.social-links a {
-    margin: 10px;
-    font-size: 24px;
-    color: #fff;
-}
-
-.social-links a:hover {
-    color: #00acee;  /* LinkedIn color or any preferred color */
-}
-
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            margin: 0;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #ddd;
+            margin-top: 10px;
+        }
+        
+        .social-links a {
+            margin: 10px;
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .social-links a:hover {
+            color: #00acee;  /* LinkedIn color or any preferred color */
+        }
+        
         .header-content {
             max-width: 800px;
             margin: 0 auto;
@@ -316,6 +316,63 @@ p {
         .social-links a:hover {
             opacity: 1;
         }
+
+        #skills {
+            padding: 50px 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        
+        #skills h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);  /* 4 items per row */
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .skill-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-icon {
+            font-size: 3rem;
+            color: #0099cc;
+            margin-right: 10px;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .skill-card p {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: #555;
+        }
+        
+        /* Responsive design for smaller screens */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);  /* 2 items per row on medium screens */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;  /* 1 item per row on small screens */
+            }
+        }
+
     </style>
 </head>
 <body>
