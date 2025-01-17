@@ -327,53 +327,55 @@
         </section>
 
         <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="project-filters">
-                <button class="filter-btn active">All</button>
-                <button class="filter-btn">Healthcare</button>
-                <button class="filter-btn">Finance</button>
-                <button class="filter-btn">Research</button>
+    <h2>Featured Projects</h2>
+    <div class="project-filters">
+        <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+        <button class="filter-btn" onclick="filterProjects('healthcare')">Healthcare</button>
+        <button class="filter-btn" onclick="filterProjects('finance')">Finance</button>
+        <button class="filter-btn" onclick="filterProjects('research')">Research</button>
+    </div>
+
+    <div class="projects-grid">
+        <div class="project-card healthcare" data-category="healthcare">
+            <img src="/api/placeholder/400/200" alt="Healthcare Project" class="project-image">
+            <div class="project-content">
+                <span class="project-tag">Healthcare</span>
+                <h3>MedNet - Medical Charge and Medical Theme Generator</h3>
+                <p>MedNet is a medical charge and theme generator app designed to assist healthcare professionals in generating medical charges and themes for diagnoses and medical cases. The app is powered by Streamlit, providing an easy-to-use interface for medical workflow automation.</p>
+                <div class="tech-stack">
+                    <strong>Technologies:</strong> Streamlit, Python, Machine Learning
+                </div>
+                <a href="https://mednet.streamlit.app/" target="_blank">Visit MedNet App</a>
             </div>
+        </div>
 
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="/api/placeholder/400/200" alt="Healthcare Project" class="project-image">
-                    <div class="project-content">
-                        <span class="project-tag">Healthcare</span>
-                        <h3>MedNet</h3>
-                        <p>A medical charge and theme generator app designed to assist with medical data analysis and theme generation, streamlining medical workflows.</p>
-                        <div class="tech-stack">
-                            <strong>Technologies:</strong> Streamlit, Python, Machine Learning
-                        </div>
-
-                    </div>
+        <div class="project-card finance" data-category="finance">
+            <img src="/api/placeholder/400/200" alt="Finance Project" class="project-image">
+            <div class="project-content">
+                <span class="project-tag">Finance</span>
+                <h3>Fraud Detection System</h3>
+                <p>Real-time anomaly detection system processing 10k+ transactions per second. Detects fraudulent activities with high accuracy using machine learning models.</p>
+                <div class="tech-stack">
+                    <strong>Technologies:</strong> PySpark, Kafka, ML
                 </div>
-
-                <div class="project-card">
-                    <img src="/api/placeholder/400/200" alt="Finance Project" class="project-image">
-                    <div class="project-content">
-                        <span class="project-tag">Finance</span>
-                        <h3>Fraud Detection System</h3>
-                        <p>Real-time anomaly detection system processing 10k+ transactions per second.</p>
-                        <div class="tech-stack">
-                            <strong>Technologies:</strong> PySpark, Kafka, ML
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="/api/placeholder/400/200" alt="Research Project" class="project-image">
-                    <div class="project-content">
-                        <span class="project-tag">Research</span>
-                        <h3>Climate Pattern Analysis</h3>
-                        <p>Advanced statistical analysis of climate data patterns and predictions.</p>
-                        <div class="tech-stack">
-                            <strong>Technologies:</strong> R, Time Series Analysis, GIS
-                        </div>
-                    </div>
-                </div>
+                <a href="#">Visit Project</a>
             </div>
-        </section>
+        </div>
+
+        <div class="project-card research" data-category="research">
+            <img src="/api/placeholder/400/200" alt="Research Project" class="project-image">
+            <div class="project-content">
+                <span class="project-tag">Research</span>
+                <h3>Climate Pattern Analysis</h3>
+                <p>Advanced statistical analysis of climate data patterns and predictions. This project uses time-series data to predict future climate trends.</p>
+                <div class="tech-stack">
+                    <strong>Technologies:</strong> R, Time Series Analysis, GIS
+                </div>
+                <a href="#">Visit Project</a>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section id="contact">
             <h2>Contact Me</h2>
@@ -395,5 +397,27 @@
             <a href="#"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
+
+    function filterProjects(category) {
+    const projects = document.querySelectorAll('.project-card');
+    projects.forEach(project => {
+        if (category === 'all' || project.getAttribute('data-category') === category) {
+            project.style.display = 'block';
+        } else {
+            project.style.display = 'none';
+        }
+    });
+
+    // Update active class on buttons
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(button => {
+        if (button.textContent.toLowerCase() === category || category === 'all') {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+}
+
 </body>
 </html>
