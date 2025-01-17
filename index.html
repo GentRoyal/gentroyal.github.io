@@ -42,30 +42,30 @@
 
         /* Typography */
         h1, .name {
-            font-size: 2.5rem;
+            font-size: 2rem; /* Adjusted from 2.5rem */
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 1rem;
             line-height: 1.2;
         }
-
+        
         h2 {
-            font-size: 2rem;
+            font-size: 1.5rem; /* Adjusted from 2rem */
             font-weight: 700;
             margin-bottom: 2rem;
             color: var(--primary);
         }
-
+        
         h3 {
-            font-size: 1.25rem;
+            font-size: 1rem; /* Adjusted from 1.25rem */
             font-weight: 600;
             margin-bottom: 1rem;
         }
-
+        
         p {
             color: var(--text-light);
             margin-bottom: 1rem;
-            font-size: 1.125rem;
+            font-size: 1rem; /* Adjusted from 1.125rem */
         }
 
         /* Navigation */
@@ -360,18 +360,17 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo"></div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
+    <nav> 
+        <div class="nav-container"> <div class="logo"></div> 
+            <div class="nav-links"> 
+                <a href="#about">About</a> <a href="#skills">Skills</a> 
+                <a href="#projects">Projects</a> 
+                <a href="#contact">Contact</a> 
+                <button id="theme-toggle" style="background: none; border: none; cursor: pointer;"> <i class="fas fa-toggle-on fa-lg"></i> </button> 
+            </div> 
+        </div> 
     </nav>
-
+    
     <header class="header-container">
         <div class="content-section">
             <h1 class="name">Ridwan Lanre Yusuf</h1>
@@ -389,8 +388,6 @@
             </div>
         </div>
     </header>
-
-    <button id="theme-toggle">Toggle Light/Dark Mode</button>
 
     <main class="container">
         <section id="about">
@@ -517,12 +514,14 @@
             });
         }
 
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-        });
+        const themeToggle = document.getElementById('theme-toggle'); 
+        const body = document.body; 
+        const toggleIcon = themeToggle.querySelector('i'); 
+        themeToggle.addEventListener('click', () => { 
+            body.classList.toggle('dark-mode'); 
+            toggleIcon.classList.toggle('fa-toggle-on'); 
+            toggleIcon.classList.toggle('fa-toggle-off');
+            
     </script>
 </body>
 </html>
