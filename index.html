@@ -385,6 +385,59 @@
                 grid-template-columns: 1fr;
             }
         }
+		
+		.image-carousel {
+			position: relative;
+			width: 100%;
+			max-width: 700px;
+			margin: 2rem auto;
+			display: none; /* Hidden by default */
+		}
+
+		.image-carousel img {
+			width: 100%;
+			height: auto;
+			border-radius: 8px;
+		}
+
+		.carousel-controls {
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			transform: translateY(-50%);
+		}
+
+		.carousel-arrow {
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+			border: none;
+			padding: 0.5rem 1rem;
+			cursor: pointer;
+			border-radius: 4px;
+		}
+
+		.carousel-arrow:hover {
+			background: rgba(0, 0, 0, 0.8);
+		}
+
+		.filter-btn {
+			padding: 0.75rem 1.5rem;
+			border: 1px solid #E2E8F0;
+			border-radius: 6px;
+			background: #FFFFFF;
+			color: #2D3748;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.filter-btn.active {
+			background: #2A9D8F;
+			color: white;
+		}
+
     </style>
 </head>
 <body>
@@ -453,52 +506,80 @@
         </section>
 
         <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="project-filters">
-                <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-                <button class="filter-btn" onclick="filterProjects('healthcare')">Healthcare</button>
-                <button class="filter-btn" onclick="filterProjects('finance')">Finance</button>
-                <button class="filter-btn" onclick="filterProjects('research')">Research</button>
+    <h2>Featured Projects</h2>
+    <div class="project-filters">
+        <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+        <button class="filter-btn" onclick="filterProjects('healthcare')">Healthcare</button>
+        <button class="filter-btn" onclick="filterProjects('finance')">Finance</button>
+        <button class="filter-btn" onclick="filterProjects('research')">Research</button>
+    </div>
+
+    <div class="projects-grid">
+        <!-- Healthcare Project -->
+        <div class="project-card healthcare" data-category="healthcare">
+            <div class="project-content">
+                <span class="project-tag">Healthcare</span>
+                <h3>MedNet - Medical Charge and Medical Theme Generator</h3>
+                <p>MedNet is a medical charge and theme generator app designed to assist healthcare professionals in generating medical charges and themes for diagnoses and medical cases. The app is powered by Streamlit, providing an easy-to-use interface for medical workflow automation.</p>
+                <div class="tech-stack">
+                    <strong>Technologies:</strong> Streamlit, Python, Machine Learning, Regression
+                </div>
+                <a href="https://mednet.streamlit.app/" target="_blank">Visit MedNet App</a>
             </div>
 
-            <div class="projects-grid">
-                <div class="project-card healthcare" data-category="healthcare">
-                    <div class="project-content">
-                        <span class="project-tag">Healthcare</span>
-                        <h3>MedNet - Medical Charge and Medical Theme Generator</h3>
-                        <p>MedNet is a medical charge and theme generator app designed to assist healthcare professionals in generating medical charges and themes for diagnoses and medical cases. The app is powered by Streamlit, providing an easy-to-use interface for medical workflow automation.</p>
-                        <div class="tech-stack">
-                            <strong>Technologies:</strong> Streamlit, Python, Machine Learning, Regression
-                        </div>
-                        <a href="https://mednet.streamlit.app/" target="_blank">Visit MedNet App</a>
-                    </div>
-                </div>
-
-                <div class="project-card finance" data-category="finance">
-                    <div class="project-content">
-                        <span class="project-tag">Finance</span>
-                        <h3>FraudDetect - Real-Time Fraud Detection and Monitoring</h3>
-                        <p>FraudDetect is a real-time anomaly detection app that leverages machine learning to identify fraudulent activities with high accuracy. The app features customizable fraud thresholds, dashboards, real-time monitoring, and prediction history for effective fraud management.</p>
-                        <div class="tech-stack">
-                            <strong>Technologies:</strong> Streamlit, Python, Machine Learning, Classification
-                        </div>
-                        <a href="https://fraud-credit-card.streamlit.app" target="_blank">Visit FraudDetect App</a>
-                    </div>
-                </div>
-
-                <div class="project-card research" data-category="research">
-                    <div class="project-content">
-                        <span class="project-tag">Research</span>
-                        <h3>Climate Pattern Analysis</h3>
-                        <p>Advanced statistical analysis of climate data patterns and predictions. This project uses time-series data to predict future climate trends.</p>
-                        <div class="tech-stack">
-                            <strong>Technologies:</strong> R, Time Series Analysis, GIS
-                        </div>
-                        <a href="#">Visit Project</a>
-                    </div>
+            <div class="image-carousel" id="carousel-healthcare">
+                <img src="healthcare/1.jpg" alt="Healthcare Screenshot" id="current-image-healthcare">
+                <div class="carousel-controls">
+                    <button class="carousel-arrow" onclick="navigateImage('healthcare', -1)">&lt;</button>
+                    <button class="carousel-arrow" onclick="navigateImage('healthcare', 1)">&gt;</button>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- Finance Project -->
+        <div class="project-card finance" data-category="finance">
+            <div class="project-content">
+                <span class="project-tag">Finance</span>
+                <h3>FraudDetect - Real-Time Fraud Detection</h3>
+                <p>FraudDetect is a real-time anomaly detection app leveraging ML to identify fraudulent activities with high accuracy.</p>
+                <div class="tech-stack">
+                    <strong>Technologies:</strong> Streamlit, Python, Machine Learning
+                </div>
+                <a href="https://fraud-credit-card.streamlit.app" target="_blank">Visit FraudDetect App</a>
+            </div>
+
+            <div class="image-carousel" id="carousel-finance">
+                <img src="finance/1.jpg" alt="Finance Screenshot" id="current-image-finance">
+                <div class="carousel-controls">
+                    <button class="carousel-arrow" onclick="navigateImage('finance', -1)">&lt;</button>
+                    <button class="carousel-arrow" onclick="navigateImage('finance', 1)">&gt;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Project -->
+        <div class="project-card research" data-category="research">
+            <div class="project-content">
+                <span class="project-tag">Research</span>
+                <h3>Climate Pattern Analysis</h3>
+                <p>Advanced statistical analysis of climate data patterns and predictions using time-series analysis.</p>
+                <div class="tech-stack">
+                    <strong>Technologies:</strong> R, Time Series Analysis, GIS
+                </div>
+                <a href="#">Visit Project</a>
+            </div>
+
+            <div class="image-carousel" id="carousel-research">
+                <img src="research/1.jpg" alt="Research Screenshot" id="current-image-research">
+                <div class="carousel-controls">
+                    <button class="carousel-arrow" onclick="navigateImage('research', -1)">&lt;</button>
+                    <button class="carousel-arrow" onclick="navigateImage('research', 1)">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
         <section id="contact">
             <h2>Contact Me</h2>
@@ -556,6 +637,44 @@
                 toggleIcon.classList.add('fa-toggle-on'); 
             }
         });
+		
+		const imageIndexes = {
+			healthcare: 0,
+			finance: 0,
+			research: 0
+		};
+
+			const images = {
+				healthcare: ["healthcare/1.jpg", "healthcare/2.jpg", "healthcare/3.jpg"],
+				finance: ["finance/1.jpg", "finance/2.jpg"],
+				research: ["research/1.jpg", "research/2.jpg", "research/3.jpg"]
+			};
+
+			function filterProjects(category) {
+				const projects = document.querySelectorAll('.project-card');
+				projects.forEach(project => {
+					const carousel = document.getElementById(`carousel-${project.getAttribute('data-category')}`);
+					if (category === 'all' || project.getAttribute('data-category') === category) {
+						project.style.display = 'block';
+						if (carousel) carousel.style.display = 'block';
+					} else {
+						project.style.display = 'none';
+						if (carousel) carousel.style.display = 'none';
+					}
+				});
+
+				document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+				event.target.classList.add('active');
+			}
+
+			function navigateImage(category, direction) {
+				const totalImages = images[category].length;
+				imageIndexes[category] = (imageIndexes[category] + direction + totalImages) % totalImages;
+
+				const currentImage = document.getElementById(`current-image-${category}`);
+				currentImage.src = images[category][imageIndexes[category]];
+			}
+
     </script>
 </body>
 </html>
