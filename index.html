@@ -7,37 +7,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css" rel="stylesheet">
     <style>
-        /* CSS Variables */
-        :root { --primary: #1A2C42; 
-               --secondary: #2A9D8F; 
-               --text-dark: #1e293b; 
-               --text: #2D3748; 
-               --text-light: #64748b; 
-               --background: #FFFFFF; 
-               --background-light: #f8fafc; 
-               --border: #E2E8F0; 
-               --hover-blue: #2563eb; 
-               --primary-dark: #ffffff; 
-               --secondary-dark: #1A2C42; 
-               --text-dark-mode: #f8fafc; 
-               --text-light-mode: #2D3748; 
-               --background-dark: #1A2C42; 
-               --background-light-mode: #FFFFFF; 
-              }
-        
-        body.dark-mode { 
-            background: var(--background-dark); 
-            color: var(--text-dark-mode); 
-        } 
-        body.dark-mode nav { 
-            background: rgba(26, 44, 66, 0.98); 
-        } 
-        body.dark-mode footer { 
-            background: var(--secondary-dark); } 
-        body.dark-mode .social-links a { 
-            color: var(--primary-dark); }
+        :root {
+            --primary: #2D3250;
+            --secondary: #7077A1;
+            --accent: #F6B17A;
+            --text-dark: #2D3250;
+            --text: #424769;
+            --text-light: #7077A1;
+            --background: #FFFFFF;
+            --background-light: #F7F7F9;
+            --border: #E2E8F0;
+        }
 
-        /* Reset & Base Styles */
+        body.dark-mode {
+            --primary: #2D3250;
+            --secondary: #7077A1;
+            --accent: #F6B17A;
+            --text-dark: #F7F7F9;
+            --text: #E2E8F0;
+            --text-light: #B4B4B4;
+            --background: #1F2937;
+            --background-light: #2D3250;
+            --border: #424769;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -45,66 +38,27 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text);
             background: var(--background);
-        }
-        
-
-        #theme-toggle { 
-            background: none; 
-            border: none; 
-            cursor: pointer; 
-            color: var(--text-dark); 
-            font-size: 1.5rem; /* Adjust the size if needed */ 
-            margin-left: 1rem; /* Adjust for spacing */ 
-        } 
-        #theme-toggle i { 
-            color: var(--text-dark); 
-        } /* Ensure dark mode styles for the toggle icon */ 
-        
-        body.dark-mode #theme-toggle i { 
-            color: var(--primary-dark); 
+            transition: all 0.3s ease;
         }
 
-        /* Typography */
-        h1, .name {
-            font-size: 2rem; /* Adjusted from 2.5rem */
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        h2 {
-            font-size: 1.5rem; /* Adjusted from 2rem */
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--primary);
-        }
-        
-        h3 {
-            font-size: 1rem; /* Adjusted from 1.25rem */
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-size: 1rem; /* Adjusted from 1.125rem */
-        }
-
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1rem 0;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode nav {
+            background: rgba(31, 41, 55, 0.95);
         }
 
         .nav-container {
@@ -119,6 +73,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -129,47 +84,63 @@
         }
 
         .nav-links a:hover {
-            color: var(--secondary);
+            color: var(--accent);
         }
 
-        /* Header Section */
-        .header-container {
+        .hero-section {
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 2rem;
-            background-color: var(--background-light);
-            gap: 3rem;
-            min-height: 400px;
-            margin-top: 60px;
-        }
-
-        .content-section {
-            flex: 1;
-            padding: 2rem;
-        }
-
-        .photo-section {
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--background-light) 0%, var(--background) 100%);
             position: relative;
-            width: 300px;
-            height: 350px;
+            overflow: hidden;
         }
 
-        .photo-frame {
-            position: relative;
+        .hero-content {
+            max-width: 1200px;
             width: 100%;
-            height: 100%;
-            background-color: var(--text-dark);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .photo-frame::after {
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-frame {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: var(--primary);
+        }
+
+        .profile-frame::before {
             content: '';
             position: absolute;
             top: 20px;
+            left: 20px;
             right: -20px;
-            width: 100%;
-            height: 100%;
-            background-color: var(--background);
+            bottom: -20px;
+            background: var(--accent);
             z-index: -1;
+            border-radius: 20px;
         }
 
         .profile-img {
@@ -178,46 +149,63 @@
             object-fit: cover;
         }
 
+        .name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
         .title {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: var(--text-light);
             margin-bottom: 2rem;
             line-height: 1.6;
         }
 
-        /* Social Links - Unified Style */
         .social-links {
             display: flex;
             gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .social-links a {
             color: var(--text-light);
             text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: var(--background-light);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .social-links a:hover {
-            color: var(--hover-blue);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        footer .social-links {
-            display: flex;
-            justify-content: center; /* Center the icons */
-            gap: 1.5rem;
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
 
-        footer .social-links a {
-            color: var(--background);
-            opacity: 0.8;
+        #theme-toggle:hover {
+            background: var(--background-light);
+            transform: rotate(180deg);
         }
 
-        footer .social-links a:hover {
-            opacity: 1;
-        }
-
-        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -226,6 +214,13 @@
 
         section {
             margin-bottom: 6rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
         }
 
         /* Skills Section */
@@ -238,12 +233,18 @@
         .skill-card {
             background: var(--background-light);
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .skill-icon {
-            color: var(--secondary);
+            color: var(--accent);
             margin-right: 0.5rem;
         }
 
@@ -268,9 +269,9 @@
         }
 
         .filter-btn.active {
-            background: var(--secondary);
+            background: var(--accent);
             color: white;
-            border-color: var(--secondary);
+            border-color: var(--accent);
         }
 
         .projects-grid {
@@ -281,15 +282,15 @@
 
         .project-card {
             background: var(--background-light);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             transition: transform 0.3s ease;
             border: 1px solid var(--border);
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .project-content {
@@ -299,17 +300,22 @@
         .project-tag {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: var(--secondary);
+            background: var(--accent);
             color: white;
             border-radius: 20px;
             font-size: 0.875rem;
             margin-bottom: 1rem;
         }
 
-        .tech-stack {
-            margin-top: 1rem;
-            color: var(--text-light);
-            font-size: 0.875rem;
+        .project-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
         }
 
         /* Contact Form */
@@ -318,7 +324,7 @@
             margin: 0 auto;
             background: var(--background-light);
             padding: 2rem;
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid var(--border);
         }
 
@@ -328,25 +334,27 @@
             margin-bottom: 1rem;
             border: 1px solid var(--border);
             border-radius: 6px;
+            background: var(--background);
+            color: var(--text);
             font-family: inherit;
         }
 
         button {
-            background: var(--secondary);
+            background: var(--accent);
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 500;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background: #248277;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Footer */
         footer {
             background: var(--primary);
             color: white;
@@ -355,28 +363,46 @@
             margin-top: 6rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
+        footer .social-links {
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        footer .social-links a {
+            background: transparent;
+            color: white;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
                 text-align: center;
-                padding: 1rem;
-                margin-top: 80px;
+                gap: 2rem;
             }
 
-                    .photo-section {
-                width: 250px;
-                height: 300px;
+            .hero-image {
+                height: 400px;
             }
 
-            .content-section {
-                padding: 1rem;
+            .profile-frame {
+                width: 300px;
+                height: 400px;
             }
 
             .social-links {
                 justify-content: center;
             }
 
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .title {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
             .nav-links {
                 gap: 1rem;
             }
@@ -385,90 +411,42 @@
                 grid-template-columns: 1fr;
             }
         }
-		
-		.image-carousel {
-			position: relative;
-			width: 100%;
-			max-width: 700px;
-			margin: 2rem auto;
-			display: none; /* Hidden by default */
-		}
-
-		.image-carousel img {
-			width: 100%;
-			height: auto;
-			border-radius: 8px;
-		}
-
-		.carousel-controls {
-			position: absolute;
-			top: 50%;
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-			transform: translateY(-50%);
-		}
-
-		.carousel-arrow {
-			background: rgba(0, 0, 0, 0.5);
-			color: white;
-			border: none;
-			padding: 0.5rem 1rem;
-			cursor: pointer;
-			border-radius: 4px;
-		}
-
-		.carousel-arrow:hover {
-			background: rgba(0, 0, 0, 0.8);
-		}
-
-		.filter-btn {
-			padding: 0.75rem 1.5rem;
-			border: 1px solid #E2E8F0;
-			border-radius: 6px;
-			background: #FFFFFF;
-			color: #2D3748;
-			font-weight: 500;
-			cursor: pointer;
-			transition: all 0.3s ease;
-		}
-
-		.filter-btn.active {
-			background: #2A9D8F;
-			color: white;
-		}
-
     </style>
 </head>
 <body>
-    <nav> 
-        <div class="nav-container"> <div class="logo"></div> 
-            <div class="nav-links"> 
-                <a href="#about">About</a> <a href="#skills">Skills</a> 
-                <a href="#projects">Projects</a> 
-                <a href="#contact">Contact</a> 
-                <button id="theme-toggle" style="background: none; border: none; cursor: pointer; color: var(--text-dark);"> <i class="fas fa-toggle-on fa-lg"></i> </button>
-            </div> 
-        </div> 
+    <nav>
+        <div class="nav-container">
+            <div class="logo"></div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <button id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
     </nav>
-    
-    <header class="header-container">
-        <div class="content-section">
-            <h1 class="name">Ridwan Lanre Yusuf</h1>
-            <p class="title">Data Scientist | Python, SQL, ML, Power BI | Building Data-Driven Solutions</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/yusufridwan/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
-                <a href="https://github.com/GentRoyal" target="_blank"><i class="fab fa-github fa-lg"></i></a>
-                <a href="https://x.com/RidwanInsights" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="name">Ridwan Lanre Yusuf</h1>
+                <p class="title">Data Scientist | Python, SQL, ML, Power BI | Building Data-Driven Solutions</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/yusufridwan/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="https://github.com/GentRoyal" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+                    <a href="https://x.com/RidwanInsights" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-frame">
+                    <img src="phot.jpg" alt="Profile" class="profile-img">
+                </div>
             </div>
         </div>
-        
-        <div class="photo-section">
-            <div class="photo-frame">
-                <img src="phot.jpg" alt="Profile" class="profile-img">
-            </div>
-        </div>
-    </header>
+    </section>
 
     <main class="container">
         <section id="about">
@@ -479,25 +457,21 @@
         <section id="skills">
             <h2>Skills & Expertise</h2>
             <div class="skills-grid">
-                <!-- Data Analysis, Preprocessing & Visualization -->
                 <div class="skill-card">
                     <h3><i class="fas fa-database skill-icon"></i>Data Analysis & Visualization</h3>
                     <p>Python, MySQL, PowerBI, A/B Testing, Interactive Dashboards, Presentation, Documentation</p>
                 </div>
 
-                <!-- Machine Learning & NLP -->
                 <div class="skill-card">
                     <h3><i class="fas fa-brain skill-icon"></i>Machine Learning & NLP</h3>
                     <p>Predictive Modeling, Clustering, Statistical Analysis, Classification, Text Classification, Topic Modeling, NLTK, SpaCy...</p>
                 </div>
 
-                <!-- Tools & Technologies -->
                 <div class="skill-card">
                     <h3><i class="fas fa-cogs skill-icon"></i>Tools & Technologies</h3>
                     <p>API Development, Streamlit, Flask</p>
                 </div>
 
-                <!-- Big Data & Automation -->
                 <div class="skill-card">
                     <h3><i class="fas fa-cloud skill-icon"></i>Big Data & Automation</h3>
                     <p>ETL, Automation, Data Pipelines, Cloud Computing</p>
@@ -506,80 +480,52 @@
         </section>
 
         <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="project-filters">
-        <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-        <button class="filter-btn" onclick="filterProjects('healthcare')">Healthcare</button>
-        <button class="filter-btn" onclick="filterProjects('finance')">Finance</button>
-        <button class="filter-btn" onclick="filterProjects('research')">Research</button>
-    </div>
-
-    <div class="projects-grid">
-        <!-- Healthcare Project -->
-        <div class="project-card healthcare" data-category="healthcare">
-            <div class="project-content">
-                <span class="project-tag">Healthcare</span>
-                <h3>MedNet - Medical Charge and Medical Theme Generator</h3>
-                <p>MedNet is a medical charge and theme generator app designed to assist healthcare professionals in generating medical charges and themes for diagnoses and medical cases. The app is powered by Streamlit, providing an easy-to-use interface for medical workflow automation.</p>
-                <div class="tech-stack">
-                    <strong>Technologies:</strong> Streamlit, Python, Machine Learning, Regression
-                </div>
-                <a href="https://mednet.streamlit.app/" target="_blank">Visit MedNet App</a>
+            <h2>Featured Projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+                <button class="filter-btn" onclick="filterProjects('healthcare')">Healthcare</button>
+                <button class="filter-btn" onclick="filterProjects('finance')">Finance</button>
+		<button class="filter-btn" onclick="filterProjects('research')">Research</button>
             </div>
 
-            <div class="image-carousel" id="carousel-healthcare">
-                <img src="healthcare/1.jpg" alt="Healthcare Screenshot" id="current-image-healthcare">
-                <div class="carousel-controls">
-                    <button class="carousel-arrow" onclick="navigateImage('healthcare', -1)">&lt;</button>
-                    <button class="carousel-arrow" onclick="navigateImage('healthcare', 1)">&gt;</button>
+            <div class="projects-grid">
+                <div class="project-card healthcare" data-category="healthcare">
+                    <div class="project-content">
+                        <span class="project-tag">Healthcare</span>
+                        <h3>MedNet - Medical Charge and Medical Theme Generator</h3>
+                        <p>MedNet is a medical charge and theme generator app designed to assist healthcare professionals in generating medical charges and themes for diagnoses and medical cases. The app is powered by Streamlit, providing an easy-to-use interface for medical workflow automation.</p>
+                        <div class="tech-stack">
+                            <strong>Technologies:</strong> Streamlit, Python, Machine Learning, Regression
+                        </div>
+                        <a href="https://mednet.streamlit.app/" target="_blank">Visit MedNet App</a>
+                    </div>
+                </div>
+
+                <div class="project-card finance" data-category="finance">
+                    <div class="project-content">
+                        <span class="project-tag">Finance</span>
+                        <h3>FraudDetect - Real-Time Fraud Detection and Monitoring</h3>
+                        <p>FraudDetect is a real-time anomaly detection app that leverages machine learning to identify fraudulent activities with high accuracy. The app features customizable fraud thresholds, dashboards, real-time monitoring, and prediction history for effective fraud management.</p>
+                        <div class="tech-stack">
+                            <strong>Technologies:</strong> Streamlit, Python, Machine Learning, Classification
+                        </div>
+                        <a href="https://fraud-credit-card.streamlit.app" target="_blank">Visit FraudDetect App</a>
+                    </div>
+                </div>
+
+                <div class="project-card research" data-category="research">
+                    <div class="project-content">
+                        <span class="project-tag">Research</span>
+                        <h3>Climate Pattern Analysis</h3>
+                        <p>Advanced statistical analysis of climate data patterns and predictions. This project uses time-series data to predict future climate trends.</p>
+                        <div class="tech-stack">
+                            <strong>Technologies:</strong> R, Time Series Analysis, GIS
+                        </div>
+                        <a href="#">Visit Project</a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Finance Project -->
-        <div class="project-card finance" data-category="finance">
-            <div class="project-content">
-                <span class="project-tag">Finance</span>
-                <h3>FraudDetect - Real-Time Fraud Detection and Monitoring</h3>
-                <p>FraudDetect is a real-time anomaly detection app that leverages machine learning to identify fraudulent activities with high accuracy. The app features customizable fraud thresholds, dashboards, real-time monitoring, and prediction history for effective fraud management.</p>
-                <div class="tech-stack">
-                    <strong>Technologies:</strong> Streamlit, Python, Machine Learning, Classification
-                </div>
-                <a href="https://fraud-credit-card.streamlit.app" target="_blank">Visit FraudDetect App</a>
-            </div>
-
-            <div class="image-carousel" id="carousel-finance">
-                <img src="finance/3.jpg" alt="Finance Screenshot" id="current-image-finance">
-        	<div class="carousel-controls">
-                    <button class="carousel-arrow" onclick="navigateImage('finance', -1)">&lt;</button>
-                    <button class="carousel-arrow" onclick="navigateImage('finance', 1)">&gt;</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Research Project -->
-        <div class="project-card research" data-category="research">
-            <div class="project-content">
-                <span class="project-tag">Research</span>
-                <h3>Climate Pattern Analysis</h3>
-                <p>Advanced statistical analysis of climate data patterns and predictions using time-series analysis.</p>
-                <div class="tech-stack">
-                    <strong>Technologies:</strong> R, Time Series Analysis, GIS
-                </div>
-                <a href="#">Visit Project</a>
-            </div>
-
-            <div class="image-carousel" id="carousel-research">
-                <img src="research/1.jpg" alt="Research Screenshot" id="current-image-research">
-                <div class="carousel-controls">
-                    <button class="carousel-arrow" onclick="navigateImage('research', -1)">&lt;</button>
-                    <button class="carousel-arrow" onclick="navigateImage('research', 1)">&gt;</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+        </section>
 
         <section id="contact">
             <h2>Contact Me</h2>
@@ -600,8 +546,18 @@
             <a href="https://x.com/RidwanInsights"><i class="fab fa-twitter"></i></a>
         </div>
     </footer>
-    
+
     <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const toggleIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            toggleIcon.classList.toggle('fa-moon');
+            toggleIcon.classList.toggle('fa-sun');
+        });
+
         function filterProjects(category) {
             const projects = document.querySelectorAll('.project-card');
             projects.forEach(project => {
@@ -615,66 +571,14 @@
             // Update active class on buttons
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(button => {
-                if (button.textContent.toLowerCase() === category || category === 'all') {
+                if (button.textContent.toLowerCase() === category || 
+                   (category === 'all' && button.textContent === 'All')) {
                     button.classList.add('active');
                 } else {
                     button.classList.remove('active');
                 }
             });
         }
-
-        const themeToggle = document.getElementById('theme-toggle'); 
-        const body = document.body; 
-        const toggleIcon = themeToggle.querySelector('i'); 
-        
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) { 
-                toggleIcon.classList.remove('fa-toggle-on'); 
-                toggleIcon.classList.add('fa-toggle-off'); }
-            else{
-                toggleIcon.classList.remove('fa-toggle-off'); 
-                toggleIcon.classList.add('fa-toggle-on'); 
-            }
-        });
-		
-		const imageIndexes = {
-			healthcare: 0,
-			finance: 0,
-			research: 0
-		};
-
-			const images = {
-				healthcare: ["healthcare/1.jpg", "healthcare/2.jpg", "healthcare/3.jpg"],
-				finance: ["finance/1.jpg", "finance/2.jpg"],
-				research: ["research/1.jpg", "research/2.jpg", "research/3.jpg"]
-			};
-
-			function filterProjects(category) {
-				const projects = document.querySelectorAll('.project-card');
-				projects.forEach(project => {
-					const carousel = document.getElementById(`carousel-${project.getAttribute('data-category')}`);
-					if (category === 'all' || project.getAttribute('data-category') === category) {
-						project.style.display = 'block';
-						if (carousel) carousel.style.display = 'block';
-					} else {
-						project.style.display = 'none';
-						if (carousel) carousel.style.display = 'none';
-					}
-				});
-
-				document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-				event.target.classList.add('active');
-			}
-
-			function navigateImage(category, direction) {
-				const totalImages = images[category].length;
-				imageIndexes[category] = (imageIndexes[category] + direction + totalImages) % totalImages;
-
-				const currentImage = document.getElementById(`current-image-${category}`);
-				currentImage.src = images[category][imageIndexes[category]];
-			}
-
     </script>
 </body>
 </html>
